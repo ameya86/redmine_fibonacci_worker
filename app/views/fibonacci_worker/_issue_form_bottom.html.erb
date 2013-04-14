@@ -1,0 +1,33 @@
+<%
+# 現在のチケットの"予定工数"
+estimated_hour = @issue.estimated_hours
+# 予定工数の選択肢
+fibonacci_list = Setting.plugin_redmine_fibonacci_worker['hour_list'].to_s.split(',')
+%>
+<% if fibonacci_list.present? %>
+<% fibonacci_list = fibonacci_list.collect(&:to_f).uniq %>
+<%= select_tag('issue[estimated_hours]',
+               options_for_select(fibonacci_list, estimated_hour),
+               :id => 'fibonacci_issue_estimated_hours') %>
+
+<%= javascript_tag do %>
+function wrap_estimated_time_form() {
+  var old_est = document.getElementById('issue_estimated_hours');
+  var new_est =  document.getElementById('fibonacci_issue_estimated_hours');
+
+  if (null == old_est || null == new_est) {
+    return;
+  }
+
+  var parent_node = old_est.parentNode;
+  if (null == parent_node){
+    return;
+  }
+
+  parent_node.insertBefore(new_est, old_est);
+  parent_node.removeChild(old_est);
+}
+
+wrap_estimated_time_form();
+<% end # javascript_tag %>
+<% end # fibonacci_list.present? %>

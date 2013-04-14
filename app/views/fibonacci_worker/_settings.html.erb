@@ -1,0 +1,5 @@
+<p>
+  <label><%= l(:field_hours) %></label>
+  <%= text_field_tag('settings[hour_list]', @settings['hour_list'], :size => 50) %>
+  <br /><small><%= l(:text_comma_separated) %></small>
+</p>

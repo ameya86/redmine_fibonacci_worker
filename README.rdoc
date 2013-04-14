@@ -1,0 +1,27 @@
+= Fibonacci Worker
+
+チケットの予定工数欄を選択式に変更します。
+
+Redmine2.3.0で動作確認
+
+
+== インストール
+
+1. RAILS_ROOT/pluginsに配置する。
+
+2. Redmineを再起動する。
+
+
+== アンインストール
+
+1. RAILS_ROOT/pluginsから削除する。
+
+2. Redmineを再起動する。
+
+
+== 更新履歴
+
+=== Version 0.0.1
+
+初回リリース。
+自己責任版です。
